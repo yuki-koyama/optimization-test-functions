@@ -25,7 +25,9 @@
 #ifndef OPTIMIZATION_TEST_FUNCTIONS_HPP_
 #define OPTIMIZATION_TEST_FUNCTIONS_HPP_
 
+#if defined(OTF_WITH_EIGEN)
 #include <Eigen/Core>
+#endif
 
 namespace otf
 {
@@ -34,7 +36,22 @@ namespace otf
         Rosenbrock,
     };
 
-    inline double GetValue(const Eigen::VectorXd& x, FunctionType type = FunctionType::Rosenbrock);
+    inline double GetValue(const double x[], const int n, const FunctionType type = FunctionType::Rosenbrock)
+    {
+        switch (type) {
+            case FunctionType::Rosenbrock:
+            {
+                return 0.0; // TODO
+            }
+        }
+    }
+
+#if defined(OTF_WITH_EIGEN)
+    inline double GetValue(const Eigen::VectorXd& x, const FunctionType type = FunctionType::Rosenbrock)
+    {
+        return GetValue(x.data(), x.size(), type);
+    }
+#endif
 }
 
 #endif
