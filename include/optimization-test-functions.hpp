@@ -25,9 +25,16 @@
 #ifndef OPTIMIZATION_TEST_FUNCTIONS_HPP_
 #define OPTIMIZATION_TEST_FUNCTIONS_HPP_
 
+#include <Eigen/Core>
+
 namespace otf
 {
+    enum class FunctionType
+    {
+        Rosenbrock,
+    };
 
+    inline double GetValue(const Eigen::VectorXd& x, FunctionType type = FunctionType::Rosenbrock);
 }
 
 #endif
