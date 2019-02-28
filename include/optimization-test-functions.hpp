@@ -25,4 +25,9 @@
 #ifndef OPTIMIZATION_TEST_FUNCTIONS_HPP_
 #define OPTIMIZATION_TEST_FUNCTIONS_HPP_
 
+namespace otf
+{
+
+}
+
 #endif
