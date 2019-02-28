@@ -25,6 +25,7 @@
 #ifndef OPTIMIZATION_TEST_FUNCTIONS_HPP_
 #define OPTIMIZATION_TEST_FUNCTIONS_HPP_
 
+#include <cassert>
 #if defined(OTF_WITH_EIGEN)
 #include <Eigen/Core>
 #endif
@@ -41,7 +42,13 @@ namespace otf
         switch (type) {
             case FunctionType::Rosenbrock:
             {
-                return 0.0; // TODO
+                assert(n >= 2);
+                double value = 0.0;
+                for (int i = 0; i < n - 1; ++ i)
+                {
+                    value += 100.0 * (x[i + 1] - x[i] * x[i]) * (x[i + 1] - x[i] * x[i]) + (1.0 - x[i]) * (1.0 - x[i]);
+                }
+                return value;
             }
         }
     }
