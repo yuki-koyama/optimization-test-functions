@@ -37,7 +37,7 @@ namespace otf
         Rosenbrock,
     };
 
-    inline double GetValue(const double x[], const int n, const FunctionType type = FunctionType::Rosenbrock)
+    inline double GetValue(const double x[], const int n, const FunctionType type)
     {
         switch (type) {
             case FunctionType::Rosenbrock:
@@ -54,7 +54,7 @@ namespace otf
     }
 
 #if defined(OTF_WITH_EIGEN)
-    inline double GetValue(const Eigen::VectorXd& x, const FunctionType type = FunctionType::Rosenbrock)
+    inline double GetValue(const Eigen::VectorXd& x, const FunctionType type)
     {
         return GetValue(x.data(), x.size(), type);
     }
