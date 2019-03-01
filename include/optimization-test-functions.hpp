@@ -36,6 +36,7 @@ namespace otf
     enum class FunctionType
     {
         Rosenbrock,
+        Sphere,
     };
 
     inline double GetValue(const double x[], const int n, const FunctionType type)
@@ -48,6 +49,15 @@ namespace otf
                 for (int i = 0; i < n - 1; ++ i)
                 {
                     value += 100.0 * (x[i + 1] - x[i] * x[i]) * (x[i + 1] - x[i] * x[i]) + (1.0 - x[i]) * (1.0 - x[i]);
+                }
+                return value;
+            }
+            case FunctionType::Sphere:
+            {
+                double value = 0.0;
+                for (int i = 0; i < n; ++ i)
+                {
+                    value += x[i] * x[i];
                 }
                 return value;
             }
@@ -65,6 +75,13 @@ namespace otf
                 assert(n >= 2);
                 std::cerr << "optimization-test-functions: Not supported yet." << std::endl;
                 exit(1);
+            }
+            case FunctionType::Sphere:
+            {
+                for (int i = 0; i < n; ++ i)
+                {
+                    grad[i] = 2.0 * x[i];
+                }
             }
         }
     }
