@@ -26,6 +26,7 @@
 #define OPTIMIZATION_TEST_FUNCTIONS_HPP_
 
 #include <cassert>
+#include <iostream>
 #if defined(OTF_WITH_EIGEN)
 #include <Eigen/Core>
 #endif
@@ -53,10 +54,32 @@ namespace otf
         }
     }
 
+    inline void GetGrad(const double x[],
+                        const int n,
+                        const FunctionType type,
+                        double grad[])
+    {
+        switch (type) {
+            case FunctionType::Rosenbrock:
+            {
+                assert(n >= 2);
+                std::cerr << "optimization-test-functions: Not supported yet." << std::endl;
+                exit(1);
+            }
+        }
+    }
+
 #if defined(OTF_WITH_EIGEN)
     inline double GetValue(const Eigen::VectorXd& x, const FunctionType type)
     {
         return GetValue(x.data(), x.size(), type);
+    }
+
+    inline Eigen::VectorXd GetGrad(const Eigen::VectorXd& x, const FunctionType type)
+    {
+        Eigen::VectorXd grad(x.size());
+        GetGrad(x.data(), x.size(), type, grad.data());
+        return grad;
     }
 #endif
 }
