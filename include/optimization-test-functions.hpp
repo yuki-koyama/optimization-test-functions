@@ -86,6 +86,27 @@ namespace otf
         }
     }
 
+    inline void GetSolution(const int n,
+                            const FunctionType type,
+                            double x[])
+    {
+        switch (type) {
+            case FunctionType::Rosenbrock:
+            {
+                assert(n >= 2);
+                std::cerr << "optimization-test-functions: Not supported yet." << std::endl;
+                exit(1);
+            }
+            case FunctionType::Sphere:
+            {
+                for (int i = 0; i < n; ++ i)
+                {
+                    x[i] = 0.0;
+                }
+            }
+        }
+    }
+
 #if defined(OTF_WITH_EIGEN)
     inline double GetValue(const Eigen::VectorXd& x, const FunctionType type)
     {
@@ -97,6 +118,13 @@ namespace otf
         Eigen::VectorXd grad(x.size());
         GetGrad(x.data(), x.size(), type, grad.data());
         return grad;
+    }
+
+    inline Eigen::VectorXd GetSolution(const int n, const FunctionType type)
+    {
+        Eigen::VectorXd x(n);
+        GetSolution(n, type, x.data());
+        return x;
     }
 #endif
 }
