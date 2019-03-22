@@ -41,7 +41,8 @@ namespace otf
 
     inline double GetValue(const double x[], const int n, const FunctionType type)
     {
-        switch (type) {
+        switch (type)
+        {
             case FunctionType::Rosenbrock:
             {
                 assert(n >= 2);
@@ -69,7 +70,8 @@ namespace otf
                         const FunctionType type,
                         double grad[])
     {
-        switch (type) {
+        switch (type)
+        {
             case FunctionType::Rosenbrock:
             {
                 assert(n >= 2);
@@ -90,7 +92,8 @@ namespace otf
                             const FunctionType type,
                             double x[])
     {
-        switch (type) {
+        switch (type)
+        {
             case FunctionType::Rosenbrock:
             {
                 assert(n >= 2);
