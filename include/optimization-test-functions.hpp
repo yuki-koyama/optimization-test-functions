@@ -75,8 +75,13 @@ namespace otf
             case FunctionType::Rosenbrock:
             {
                 assert(n >= 2);
-                std::cerr << "optimization-test-functions: Not supported yet." << std::endl;
-                exit(1);
+                grad[0] = - 400.0 * x[0] * (x[1] - x[0] * x[0]) + 2.0 * (x[0] - 1.0);
+                for (int i = 1; i < n - 1; ++ i)
+                {
+                    grad[i] = 200.0 * (x[i] - x[i - 1] * x[i - 1]) - 400.0 * x[i] * (x[i + 1] - x[i] * x[i]) + 2.0 * (x[i] - 1.0);
+                }
+                grad[n - 1] = 200.0 * (x[n - 1] - x[n - 2] * x[n - 2]);
+                return;
             }
             case FunctionType::Sphere:
             {
@@ -84,6 +89,7 @@ namespace otf
                 {
                     grad[i] = 2.0 * x[i];
                 }
+                return;
             }
         }
     }
@@ -97,8 +103,11 @@ namespace otf
             case FunctionType::Rosenbrock:
             {
                 assert(n >= 2);
-                std::cerr << "optimization-test-functions: Not supported yet." << std::endl;
-                exit(1);
+                for (int i = 0; i < n; ++ i)
+                {
+                    x[i] = 1.0;
+                }
+                return;
             }
             case FunctionType::Sphere:
             {
@@ -106,6 +115,7 @@ namespace otf
                 {
                     x[i] = 0.0;
                 }
+                return;
             }
         }
     }
