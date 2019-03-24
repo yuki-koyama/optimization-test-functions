@@ -10,4 +10,5 @@ A set of test functions to evaluate optimization algorithms
 
 ## Projects using optimization-test-functions
 
+- mathtoolbox <https://github.com/yuki-koyama/mathtoolbox>
 - VisOpt Slider (UIST 2014) <https://github.com/yuki-koyama/visoptslider>
