@@ -35,6 +35,7 @@ namespace otf
 {
     enum class FunctionType
     {
+        Beale,
         Rosenbrock,
         Sphere,
     };
@@ -43,6 +44,14 @@ namespace otf
     {
         switch (type)
         {
+            case FunctionType::Beale:
+            {
+                assert(n == 2);
+                const double a = 1.500 - x[0] + x[0] * x[1];
+                const double b = 2.250 - x[0] + x[0] * x[1] * x[1];
+                const double c = 2.625 - x[0] + x[0] * x[1] * x[1] * x[1];
+                return a * a + b * b + c * c;
+            }
             case FunctionType::Rosenbrock:
             {
                 assert(n >= 2);
@@ -72,6 +81,16 @@ namespace otf
     {
         switch (type)
         {
+            case FunctionType::Beale:
+            {
+                assert(n == 2);
+                const double a = 1.500 - x[0] + x[0] * x[1];
+                const double b = 2.250 - x[0] + x[0] * x[1] * x[1];
+                const double c = 2.625 - x[0] + x[0] * x[1] * x[1] * x[1];
+                grad[0] = 2.0 * a * (- 1.0 + x[1]) + 2.0 * b * (- 1.0 + x[1] * x[1]) + 2.0 * c * (- 1.0 + x[1] * x[1] * x[1]);
+                grad[1] = 2.0 * a * x[0] + 2.0 * b * 2.0 * x[0] * x[1] + 2.0 * c * 3.0 * x[0] * x[1] * x[1];
+                return;
+            }
             case FunctionType::Rosenbrock:
             {
                 assert(n >= 2);
@@ -100,6 +119,13 @@ namespace otf
     {
         switch (type)
         {
+            case FunctionType::Beale:
+            {
+                assert(n == 2);
+                x[0] = 3.0;
+                x[1] = 0.5;
+                return;
+            }
             case FunctionType::Rosenbrock:
             {
                 assert(n >= 2);
