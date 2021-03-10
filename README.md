@@ -11,5 +11,6 @@ A set of test functions to evaluate optimization algorithms
 
 ## Projects using optimization-test-functions
 
+- Sequential Gallery (SIGGRAPH 2020) <https://github.com/yuki-koyama/sequential-gallery>
 - mathtoolbox <https://github.com/yuki-koyama/mathtoolbox>
 - VisOpt Slider (UIST 2014) <https://github.com/yuki-koyama/visoptslider>
